@@ -1,0 +1,14 @@
+# fabrik-test-alpha
+
+Primary test bed for [Fabrik](https://github.com/handarbeit/fabrik), paired with [`fabrik-test-beta`](https://github.com/handarbeit/fabrik-test-beta).
+
+This repository is not a real project. It exists purely as substrate for exercising Fabrik's multi-repo features (cross-repo sub-issue spawn, cross-repo dependency linkage, parallel multi-repo work, etc.) without polluting real project boards.
+
+## Layout
+
+- `main.go` — minimal CLI that will eventually consume `fabrik-test-beta`'s greeting package. Cross-repo Fabrik tests file issues here that require a change in beta first.
+- `.specify/` — Spec Kit templates used by Fabrik's customized Specify stage.
+
+## License
+
+Apache 2.0 (matches Fabrik upstream).
