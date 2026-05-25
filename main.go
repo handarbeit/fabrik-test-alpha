@@ -13,4 +13,5 @@ func main() {
 		name = os.Args[1]
 	}
 	fmt.Println(greeting.GreetingFor(name))
+	fmt.Println(greeting.HelloE2E())
 }

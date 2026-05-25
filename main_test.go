@@ -10,10 +10,10 @@ func TestGreetingOutput(t *testing.T) {
 	tests := []struct {
 		name     string
 		args     []string
-		expected string
+		expected []string
 	}{
-		{"default", nil, "Hello, world, from fabrik-test-beta"},
-		{"with argument", []string{"Alice"}, "Hello, Alice, from fabrik-test-beta"},
+		{"default", nil, []string{"Hello, world, from fabrik-test-beta", "e2e-cross-repo-spawn"}},
+		{"with argument", []string{"Alice"}, []string{"Hello, Alice, from fabrik-test-beta", "e2e-cross-repo-spawn"}},
 	}
 
 	for _, tt := range tests {
@@ -23,9 +23,11 @@ func TestGreetingOutput(t *testing.T) {
 			if err != nil {
 				t.Fatalf("go run failed: %v\nOutput: %s", err, out)
 			}
-			got := strings.TrimSpace(string(out))
-			if got != tt.expected {
-				t.Errorf("expected %q, got %q", tt.expected, got)
+			got := string(out)
+			for _, s := range tt.expected {
+				if !strings.Contains(got, s) {
+					t.Errorf("expected output to contain %q, got %q", s, got)
+				}
 			}
 		})
 	}
