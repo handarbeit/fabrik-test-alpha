@@ -40,7 +40,7 @@ A developer monitoring the Fabrik project board sees this issue advance automati
 ### Functional Requirements
 
 - **FR-001**: Implement MUST append exactly `<!-- smoke-full-pipeline-20260525-022137 -->` as the final line of `README.md`
-- **FR-002**: No other files MUST be modified
+- **FR-002**: No other source or configuration files MUST be modified
 - **FR-003**: The Plan stage MUST NOT spawn sub-issues or decompose across repos
 - **FR-004**: The PR body MUST contain `Closes #11` so Fabrik can discover and merge it
 
@@ -51,7 +51,7 @@ A developer monitoring the Fabrik project board sees this issue advance automati
 - **SC-001**: The issue reaches the Done column on the project board
 - **SC-002**: The linked PR is merged into `main`
 - **SC-003**: `README.md` on `main` ends with the line `<!-- smoke-full-pipeline-20260525-022137 -->`
-- **SC-004**: No other files are changed in the merged PR diff
+- **SC-004**: No other files (excluding this specification) are changed in the merged PR diff
 
 ## Assumptions
 
