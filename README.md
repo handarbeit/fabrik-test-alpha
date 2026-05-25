@@ -12,3 +12,4 @@ This repository is not a real project. It exists purely as substrate for exercis
 ## License
 
 Apache 2.0 (matches Fabrik upstream).
+<!-- smoke-full-pipeline-20260525-022137 -->
