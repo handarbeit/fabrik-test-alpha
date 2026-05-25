@@ -19,3 +19,24 @@ jobs:
         run: git config --global url."https://${{ secrets.HANDARBEIT_PAT }}@github.com/".insteadOf "https://github.com/"
       - run: go build ./...
       - run: go test ./...
+
+  # slow-gate is a required status check whose duration is controlled by an
+  # opt-in marker in the PR body. Without the marker it exits in seconds.
+  # With the marker present it sleeps for SLOW_CI_SECONDS to deliberately
+  # widen the window during which main can move under an in-flight PR — used
+  # by the convergence-race e2e test for handarbeit/fabrik#829.
+  slow-gate:
+    runs-on: ubuntu-latest
+    env:
+      SLOW_CI_SECONDS: "360"
+    steps:
+      - name: Conditional slow gate
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if echo "$PR_BODY" | grep -q 'slow-ci-required'; then
+            echo "marker present — sleeping ${SLOW_CI_SECONDS}s to widen the merge-race window"
+            sleep "${SLOW_CI_SECONDS}"
+          else
+            echo "no slow-ci-required marker — fast path"
+          fi
