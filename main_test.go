@@ -25,8 +25,8 @@ func TestGreetingOutput(t *testing.T) {
 			}
 			got := string(out)
 			for _, s := range tt.expected {
-				if !strings.Contains(got, s) {
-					t.Errorf("expected output to contain %q, got %q", s, got)
+				if !strings.Contains(got, s+"\n") {
+					t.Errorf("expected output to contain line %q, got %q", s, got)
 				}
 			}
 		})
