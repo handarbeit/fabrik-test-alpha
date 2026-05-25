@@ -42,7 +42,7 @@ The e2e harness watches both pair members advance through the pipeline. When the
 ### Functional Requirements
 
 - **FR-001**: Implement MUST insert exactly `<!-- convergence-race-A-20260525-225522 -->` as a new line immediately after the line `# fabrik-test-alpha` in `README.md`
-- **FR-002**: No other files MUST be modified
+- **FR-002**: No other files (excluding this specification) MUST be modified
 - **FR-003**: The PR body MUST contain the literal string `slow-ci-required` (exact, unformatted) so the CI slow-gate fires
 - **FR-004**: The PR body MUST contain `Closes #14` so Fabrik can discover and auto-merge the PR
 - **FR-005**: The Plan stage MUST NOT decompose into sub-issues — this is a single-repo, single-file, one-line change
