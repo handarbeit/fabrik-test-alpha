@@ -1,5 +1,6 @@
 # fabrik-test-alpha
 <!-- convergence-race-B-20260526-122826 -->
+<!-- convergence-race-A-20260526-122826 -->
 
 Primary test bed for [Fabrik](https://github.com/handarbeit/fabrik), paired with [`fabrik-test-beta`](https://github.com/handarbeit/fabrik-test-beta).
 
