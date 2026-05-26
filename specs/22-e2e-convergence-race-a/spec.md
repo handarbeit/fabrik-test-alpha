@@ -21,7 +21,7 @@ Implement inserts exactly one line — `<!-- convergence-race-A-20260526-122826 
 
 **Why this priority**: The position is load-bearing for the e2e race test. Inserting elsewhere or modifying other files breaks the conflict geometry.
 
-**Independent Test**: After Implement runs, `git diff main` shows exactly one added line immediately after `# fabrik-test-alpha`, and `git diff main -- . ':!README.md'` is empty.
+**Independent Test**: After Implement runs, `git diff main` shows exactly one added line immediately after `# fabrik-test-alpha`, and `git diff main -- . ':!README.md' ':!specs/'` is empty.
 
 **Acceptance Scenarios**:
 
