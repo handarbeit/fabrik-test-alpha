@@ -16,3 +16,4 @@ This repository is not a real project. It exists purely as substrate for exercis
 Apache 2.0 (matches Fabrik upstream).
 <!-- smoke-full-pipeline-20260525-022137 -->
 <!-- auto-merge-yolo-20260526-122826 -->
+<!-- auto-merge-yolo-20260527-150017 -->
