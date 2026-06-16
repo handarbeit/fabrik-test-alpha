@@ -2,7 +2,7 @@
 
 **Feature Branch**: `fabrik/issue-32`
 **Created**: 2026-06-16
-**Status**: Draft
+**Status**: Implemented
 **Input**: User description: "Deterministic provocation of the post-Validate auto-merge race covered by handarbeit/fabrik#829. This issue is one of a deliberately-conflicting pair filed by the e2e harness."
 
 ## Background
