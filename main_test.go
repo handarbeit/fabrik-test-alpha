@@ -12,8 +12,8 @@ func TestGreetingOutput(t *testing.T) {
 		args     []string
 		expected []string
 	}{
-		{"default", nil, []string{"Hello, world, from fabrik-test-beta", "e2e-cross-repo-spawn"}},
-		{"with argument", []string{"Alice"}, []string{"Hello, Alice, from fabrik-test-beta", "e2e-cross-repo-spawn"}},
+		{"default", nil, []string{"Hello, world, from fabrik-test-beta", "e2e-cross-repo-spawn", "e2e-cross-repo-spawn-31"}},
+		{"with argument", []string{"Alice"}, []string{"Hello, Alice, from fabrik-test-beta", "e2e-cross-repo-spawn", "e2e-cross-repo-spawn-31"}},
 	}
 
 	for _, tt := range tests {
