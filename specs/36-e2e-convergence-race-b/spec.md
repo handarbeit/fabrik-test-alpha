@@ -7,9 +7,9 @@
 
 ## Background
 
-Fabrik's post-Validate auto-merge path can race when two issues both target the same position in main and one merges while the other is in CI. Issue handarbeit/fabrik#829 tracks this race condition. This issue is the B-side of a deliberately-conflicting pair that the e2e harness files to provoke and verify the race deterministically.
+Fabrik's post-Validate auto-merge path can race when two issues both target the same position in `main` and one merges while the other is in CI. Issue handarbeit/fabrik#829 tracks this race condition. This issue is the B-side of a deliberately-conflicting pair that the e2e harness files to provoke and verify the race deterministically.
 
-Both pair members insert a single HTML comment immediately after the `# fabrik-test-alpha` heading in `README.md`. Because they target the identical line position, whichever merges second will encounter a textual conflict on rebase. The CI slow-gate (`slow-ci-required` in the PR body) holds the first-merged PR in CI for ~6 minutes, creating a deterministic window for main to advance under the second PR before it completes Validate.
+Both pair members insert a single HTML comment immediately after the `# fabrik-test-alpha` heading in `README.md`. Because they target the identical line position, whichever merges second will encounter a textual conflict on rebase. The CI slow-gate (`slow-ci-required` in the PR body) holds the first-merged PR in CI for ~6 minutes, creating a deterministic window for `main` to advance under the second PR before it completes Validate.
 
 The `fabrik:yolo` label is present, so Fabrik will auto-advance through all stages and auto-merge the PR on Validate completion.
 
