@@ -25,7 +25,7 @@ A developer monitoring the Fabrik project board sees this issue advance automati
 
 1. **Given** the issue at Specify with `fabrik:cruise`, **When** Fabrik processes it, **Then** the issue advances to Research without requiring human input
 2. **Given** the issue in the pipeline, **When** Implement runs, **Then** a draft PR is created on branch `fabrik/issue-47` with `Closes #47` in the body
-3. **Given** Validate completing, **When** the stage signals `FABRIK_STAGE_COMPLETE`, **Then** the PR remains open (not auto-merged)
+3. **Given** the Validate stage is complete, **When** the stage signals `FABRIK_STAGE_COMPLETE`, **Then** the PR remains open (not auto-merged)
 4. **Given** the PR still open after Validate, **When** a human merges it, **Then** the issue moves to Done
 
 ---
