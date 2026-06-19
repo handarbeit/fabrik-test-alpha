@@ -1,5 +1,6 @@
 # fabrik-test-alpha
 <!-- ci-fix-reinvoke-initial -->
+<!-- ci-fix-sentinel-satisfied -->
 <!-- convergence-race-B-20260619-182103 -->
 <!-- convergence-race-A-20260619-182103 -->
 <!-- convergence-race-B-20260619-172219 -->
