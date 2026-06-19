@@ -36,7 +36,7 @@ The e2e harness expects exactly one new line inserted into README.md immediately
 ### Functional Requirements
 
 - **FR-001**: README.md MUST have exactly one new line inserted immediately after the line containing `# fabrik-test-alpha`, with the content `<!-- convergence-race-B-20260619-182103 -->`.
-- **FR-002**: No file other than README.md may be modified by this change.
+- **FR-002**: No file other than README.md may be modified by this change (with the exception of this specification file).
 - **FR-003**: The PR body MUST contain the literal string `slow-ci-required` so the test repo's slow-CI gate fires and provides the 6-minute race window.
 - **FR-004**: If a rebase conflict is encountered with the pair partner's marker at the same position, the conflict MUST be resolved by retaining both lines (in either order).
 
@@ -45,7 +45,7 @@ The e2e harness expects exactly one new line inserted into README.md immediately
 ### Measurable Outcomes
 
 - **SC-001**: `git diff HEAD~1 HEAD -- README.md` shows exactly one line added: `<!-- convergence-race-B-20260619-182103 -->` immediately after `# fabrik-test-alpha`, and no other changes.
-- **SC-002**: `git diff HEAD~1 HEAD --name-only` lists only `README.md`.
+- **SC-002**: The merged PR diff touches only README.md (excluding this specification file).
 - **SC-003**: The linked PR body contains the literal string `slow-ci-required`.
 - **SC-004**: The spec file `specs/70-e2e-convergence-race-b/spec.md` is committed on the feature branch (FR-002 is satisfied at the spec stage by not modifying any source files here).
 
