@@ -29,7 +29,7 @@ The e2e harness expects exactly one new line inserted into README.md immediately
 ### Edge Cases
 
 - If a rebase conflict is encountered with the pair partner's marker at the same line, both markers must be kept (order does not matter).
-- No other files may be modified. Any diff touching files other than README.md is out of scope and incorrect.
+- No other files may be modified (except this specification file). Any diff touching files other than README.md and this spec file is out of scope and incorrect.
 
 ## Requirements *(mandatory)*
 
@@ -53,7 +53,7 @@ The e2e harness expects exactly one new line inserted into README.md immediately
 
 - README.md exists in the repository root and its first line is `# fabrik-test-alpha`.
 - The pair partner issue targets the same line with a different discriminator (`convergence-race-A-*`), producing a genuine textual conflict on rebase.
-- No other changes are needed; this is a one-line edit followed by a one-line commit.
+- No other changes are needed; this is a one-line edit to README.md (the spec file is committed separately in its own commit).
 
 ## Out of Scope
 
