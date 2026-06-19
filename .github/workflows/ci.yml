@@ -60,7 +60,7 @@ jobs:
           fi
           if echo "$PR_BODY" | grep -qF 'ci-fix-sentinel-required'; then
             if ([ -f SENTINEL_FIX ] && grep -qF 'ci-fix-satisfied' SENTINEL_FIX) || \
-               grep -qF '<!-- ci-fix-sentinel-satisfied -->' README.md; then
+               grep -A1 -F '<!-- ci-fix-reinvoke-initial -->' README.md | grep -qF '<!-- ci-fix-sentinel-satisfied -->'; then
               echo "Sentinel satisfied"
             else
               echo "::error::CI fix sentinel FAILED"
