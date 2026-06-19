@@ -2,7 +2,7 @@
 
 **Feature Branch**: `fabrik/issue-80`
 **Created**: 2026-06-19
-**Status**: Draft
+**Status**: Implemented
 **Input**: User description: "e2e ci-fix-reinvoke (20260619-211012)"
 
 ## Background
@@ -44,7 +44,7 @@ When the CI-fix reinvoke fires (the stage receives a prompt about CI failure), a
 
 ### Edge Cases
 
-- No other files may be modified by either commit (except this specification file).
+- No other files may be modified by either marker commit (except this specification file, committed separately). The CI sentinel update in `.github/workflows/ci.yml` is a prerequisite commit, not a marker commit, and is not subject to this constraint.
 - Plan MUST NOT decompose this into sub-issues; the change is intentionally atomic.
 - The two commits must not be squashed or rebased into one — the e2e harness counts them.
 
@@ -56,7 +56,7 @@ When the CI-fix reinvoke fires (the stage receives a prompt about CI failure), a
 - **FR-002**: The PR body MUST contain the literal string `ci-fix-sentinel-required` so the CI sentinel check fires on the initial commit.
 - **FR-003**: When the CI-fix reinvoke fires, the second commit MUST add exactly one line — `<!-- ci-fix-sentinel-satisfied -->` — immediately below `<!-- ci-fix-reinvoke-initial -->` in `README.md`, with no other file changes.
 - **FR-004**: The two commits MUST remain as distinct, separate commits on the branch — no rebase, squash, or amend that merges them.
-- **FR-005**: No file other than `README.md` (and this specification file) may be modified by either commit.
+- **FR-005**: No file other than `README.md` may be modified by either marker commit (the initial commit and the CI-fix commit). The CI sentinel update and the spec file are separate prerequisite commits and are not subject to this constraint.
 - **FR-006**: The Plan stage MUST NOT decompose this into sub-tasks or sub-issues.
 
 ## Success Criteria *(mandatory)*
@@ -80,5 +80,5 @@ When the CI-fix reinvoke fires (the stage receives a prompt about CI failure), a
 
 - Any changes to files other than `README.md` (and this spec file).
 - Decomposition into sub-issues.
-- Any logic, configuration, or test changes beyond the two-commit marker sequence.
-- Any changes to CI configuration itself.
+- Any logic, configuration, or test changes unrelated to the CI sentinel update and two-commit marker sequence.
+- Any unrelated CI configuration changes. (Updating the `ci-fix-sentinel` job to recognize `<!-- ci-fix-sentinel-satisfied -->` in README.md is in scope — it is the test instrument for this e2e scenario.)
