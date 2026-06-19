@@ -40,3 +40,33 @@ jobs:
           else
             echo "no slow-ci-required marker — fast path"
           fi
+
+  # ci-fix-sentinel is a required status check used by the CI-fix reinvoke e2e test
+  # (handarbeit/fabrik#897). Without a sentinel marker in the PR body it exits 0
+  # immediately. With ci-fix-sentinel-required it fails unless SENTINEL_FIX contains
+  # the magic string. With ci-fix-sentinel-unfixable it always fails unconditionally.
+  ci-fix-sentinel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: CI fix sentinel
+        env:
+          PR_BODY: ${{ github.event.pull_request.body || '' }}
+        run: |
+          if echo "$PR_BODY" | grep -qF 'ci-fix-sentinel-unfixable'; then
+            echo "::error::Unfixable sentinel — fails unconditionally by design (e2e test)"
+            exit 1
+          fi
+          if echo "$PR_BODY" | grep -qF 'ci-fix-sentinel-required'; then
+            if [ -f SENTINEL_FIX ] && grep -qF 'ci-fix-satisfied' SENTINEL_FIX; then
+              echo "Sentinel satisfied — SENTINEL_FIX contains magic string"
+            else
+              echo "::error::CI fix sentinel FAILED"
+              echo "This PR includes the ci-fix-sentinel-required marker."
+              echo "Fix: create a file named SENTINEL_FIX containing the line: ci-fix-satisfied"
+              echo "Then commit and push. Do not modify any other files."
+              exit 1
+            fi
+          else
+            echo "No sentinel marker — passing"
+          fi
