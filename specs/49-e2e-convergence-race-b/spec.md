@@ -44,7 +44,7 @@ The e2e harness confirms that when both pair members run concurrently, the B-sid
 ### Functional Requirements
 
 - **FR-001**: Implement MUST insert `<!-- convergence-race-B-20260619-154613 -->` as a new line immediately after the line `# fabrik-test-alpha` in `README.md`
-- **FR-002**: No other lines in `README.md` and no other files MUST be modified
+- **FR-002**: No other lines in `README.md` and no other files (except this specification) MUST be modified
 - **FR-003**: The PR body MUST contain the literal text `slow-ci-required` so the test repo's slow-gate CI job fires
 - **FR-004**: The Plan stage MUST NOT spawn sub-issues or decompose the work
 - **FR-005**: If a rebase conflict is encountered at the insertion position (because the A-side marker is already there), the conflict MUST be resolved by keeping both markers in either order
