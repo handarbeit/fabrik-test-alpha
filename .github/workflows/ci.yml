@@ -60,7 +60,7 @@ jobs:
             exit 1
           fi
           if echo "$PR_BODY" | grep -qF 'ci-fix-sentinel-required'; then
-            NONCE="$(git rev-list origin/main..HEAD | tail -1)"
+            NONCE="$(git rev-list ${{ github.event.pull_request.base.sha }}..HEAD | tail -1)"
             echo "To satisfy CI, create SENTINEL_FIX containing: ${NONCE}" >> "$GITHUB_STEP_SUMMARY"
             if [ -f SENTINEL_FIX ] && grep -qF "${NONCE}" SENTINEL_FIX; then
               echo "Sentinel satisfied — SENTINEL_FIX contains nonce"
