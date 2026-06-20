@@ -42,3 +42,4 @@ Apache 2.0 (matches Fabrik upstream).
 <!-- paused-merged-pr-no-gate-label-20260619-231232 -->
 <!-- paused-merged-pr-awaiting-ci-20260619-235756 -->
 <!-- paused-merged-pr-awaiting-review-20260620-000545 -->
+<!-- paused-merged-pr-no-gate-label-20260620-001234 -->
