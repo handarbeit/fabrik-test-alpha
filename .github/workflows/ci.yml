@@ -28,7 +28,7 @@ jobs:
   slow-gate:
     runs-on: ubuntu-latest
     env:
-      SLOW_CI_SECONDS: "360"
+      SLOW_CI_SECONDS: "600"
     steps:
       - name: Conditional slow gate
         env:
