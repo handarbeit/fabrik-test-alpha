@@ -58,12 +58,14 @@ jobs:
             exit 1
           fi
           if echo "$PR_BODY" | grep -qF 'ci-fix-sentinel-required'; then
-            if [ -f SENTINEL_FIX ] && grep -qF 'ci-fix-satisfied' SENTINEL_FIX; then
-              echo "Sentinel satisfied — SENTINEL_FIX contains magic string"
+            NONCE="${GITHUB_RUN_ID}"
+            echo "To satisfy CI, create SENTINEL_FIX containing: ${NONCE}" >> "$GITHUB_STEP_SUMMARY"
+            if [ -f SENTINEL_FIX ] && grep -qF "${NONCE}" SENTINEL_FIX; then
+              echo "Sentinel satisfied — SENTINEL_FIX contains nonce"
             else
               echo "::error::CI fix sentinel FAILED"
               echo "This PR includes the ci-fix-sentinel-required marker."
-              echo "Fix: create a file named SENTINEL_FIX containing the line: ci-fix-satisfied"
+              echo "Fix: create a file named SENTINEL_FIX containing: ${NONCE}"
               echo "Then commit and push. Do not modify any other files."
               exit 1
             fi
