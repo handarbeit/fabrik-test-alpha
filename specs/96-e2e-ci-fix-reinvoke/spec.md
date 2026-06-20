@@ -2,7 +2,7 @@
 
 **Feature Branch**: `fabrik/issue-96`
 **Created**: 2026-06-19
-**Status**: Draft
+**Status**: Implemented
 **Input**: User description: "e2e ci-fix-reinvoke (20260620-002323)"
 
 ## Background
