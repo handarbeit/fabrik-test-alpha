@@ -49,6 +49,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: CI fix sentinel
         env:
           PR_BODY: ${{ github.event.pull_request.body || '' }}
@@ -58,7 +60,7 @@ jobs:
             exit 1
           fi
           if echo "$PR_BODY" | grep -qF 'ci-fix-sentinel-required'; then
-            NONCE="${GITHUB_RUN_ID}"
+            NONCE="$(git rev-list origin/main..HEAD | tail -1)"
             echo "To satisfy CI, create SENTINEL_FIX containing: ${NONCE}" >> "$GITHUB_STEP_SUMMARY"
             if [ -f SENTINEL_FIX ] && grep -qF "${NONCE}" SENTINEL_FIX; then
               echo "Sentinel satisfied — SENTINEL_FIX contains nonce"
