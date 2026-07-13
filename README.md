@@ -51,3 +51,4 @@ Apache 2.0 (matches Fabrik upstream).
 <!-- paused-merged-pr-awaiting-ci-20260713-035959 -->
 <!-- paused-merged-pr-awaiting-review-20260713-040616 -->
 <!-- smoke-full-pipeline-20260713-120725 -->
+<!-- paused-merged-pr-awaiting-ci-20260713-122241 -->
