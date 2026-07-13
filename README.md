@@ -1,4 +1,5 @@
 # fabrik-test-alpha
+<!-- convergence-race-B-20260713-040640 -->
 <!-- conjunctive-ci-review-gate-test -->
 <!-- conjunctive-ci-review-gate-test -->
 <!-- ci-fix-reinvoke-initial -->
