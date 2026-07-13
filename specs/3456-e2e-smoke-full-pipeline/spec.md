@@ -57,3 +57,7 @@ As the Fabrik operator running this smoke test, I want a trivial, unambiguous is
 
 - Any change to files other than `README.md`.
 - Any multi-repo or decomposed sub-issue work.
+
+## Source References
+
+- `README.md` — the only file modified by this issue
