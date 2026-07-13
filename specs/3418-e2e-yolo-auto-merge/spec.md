@@ -2,7 +2,7 @@
 
 **Feature Branch**: `fabrik/issue-3418`
 **Created**: 2026-07-12
-**Status**: Draft
+**Status**: Approved
 **Input**: User description: "End-to-end verification of the GitHub native auto-merge path for yolo issues (#829)."
 
 ## Background
