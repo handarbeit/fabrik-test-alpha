@@ -2,7 +2,7 @@
 
 **Feature Branch**: `fabrik/issue-3466`
 **Created**: 2026-07-14
-**Status**: Draft
+**Status**: Approved
 **Input**: User description: "e2e yolo auto-merge (20260714-125806)"
 
 ## Background
