@@ -2,7 +2,7 @@
 
 **Feature Branch**: `fabrik/issue-3472`
 **Created**: 2026-07-14
-**Status**: Draft
+**Status**: Approved
 **Input**: User description: "Verify cross-repo decomposition works end-to-end. Plan should spawn a sub-issue in handarbeit/fabrik-test-beta because the work requires changes in both repos in strict order."
 
 ## Background
