@@ -2,7 +2,7 @@
 
 **Feature Branch**: `fabrik/issue-3468`
 **Created**: 2026-07-14
-**Status**: Draft
+**Status**: Approved
 **Input**: User description: "e2e convergence-race B (20260714-130758)"
 
 ## Background
