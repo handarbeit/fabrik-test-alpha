@@ -88,4 +88,4 @@ The Implement stage appends exactly one HTML comment line to `README.md` and no 
 ## Source References
 
 - `README.md` — the only file modified by this issue
-- Issue #3416 — earlier analogous cruise smoke test run
+- Issue #3485 — earlier analogous cruise smoke test run
