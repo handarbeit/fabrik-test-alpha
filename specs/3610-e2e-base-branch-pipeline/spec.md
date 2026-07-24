@@ -3,13 +3,13 @@
 **Feature Branch**: `fabrik/issue-3610`
 **Created**: 2026-07-24
 **Status**: Draft
-**Input**: User description: "End-to-end verification of the base:<branch> (non-default base branch) pipeline contract — regression coverage for handarbeit/fabrik#1046, validating the #1047 (issue<->PR linkage) and #1050 (review-gate data feed) fixes."
+**Input**: User description: "End-to-end verification of the base:<branch> (non-default base branch) pipeline contract — regression coverage for handarbeit/fabrik#1046, validating the handarbeit/fabrik#1047 (issue<->PR linkage) and handarbeit/fabrik#1050 (review-gate data feed) fixes."
 
 ## Background
 
-Fabrik supports overriding an issue's base branch via the `base:<branch>` label, so that the issue's worktree is forked from, rebased onto, and its PR targeted at a branch other than the repository default. handarbeit/fabrik#1046 tracked a regression in this contract; #1047 fixed issue↔PR linkage discovery when the PR targets a non-default base, and #1050 fixed the review-gate data feed (reviewer/CI status lookups) for PRs against a non-default base branch.
+Fabrik supports overriding an issue's base branch via the `base:<branch>` label, so that the issue's worktree is forked from, rebased onto, and its PR targeted at a branch other than the repository default. handarbeit/fabrik#1046 tracked a regression in this contract; handarbeit/fabrik#1047 fixed issue↔PR linkage discovery when the PR targets a non-default base, and handarbeit/fabrik#1050 fixed the review-gate data feed (reviewer/CI status lookups) for PRs against a non-default base branch.
 
-This issue is a recurrent single-repo end-to-end smoke test for the `base:<branch>` contract: it verifies that Fabrik correctly forks, rebases, and targets a PR at the non-default branch `e2e-base-branch-20260724-051545` throughout the full pipeline, that the engine still discovers the linked PR and its review/CI state via `closedByPullRequestsReferences` (the #1047/#1050 fix path), and that the pipeline auto-advances end-to-end under `fabrik:cruise`. The change is the simplest possible — one line appended to `README.md` — to keep noise minimal and isolate the base-branch mechanics as the thing under test.
+This issue is a recurrent single-repo end-to-end smoke test for the `base:<branch>` contract: it verifies that Fabrik correctly forks, rebases, and targets a PR at the non-default branch `e2e-base-branch-20260724-051545` throughout the full pipeline, that the engine still discovers the linked PR and its review/CI state via `closedByPullRequestsReferences` (the handarbeit/fabrik#1047/handarbeit/fabrik#1050 fix path), and that the pipeline auto-advances end-to-end under `fabrik:cruise`. The change is the simplest possible — one line appended to `README.md` — to keep noise minimal and isolate the base-branch mechanics as the thing under test.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -31,9 +31,9 @@ A developer monitoring the Fabrik project board sees this issue advance through 
 
 ### User Story 2 - Engine discovers PR linkage and review/CI state on the non-default base (Priority: P1)
 
-The engine's issue→PR discovery (`closedByPullRequestsReferences`) and review-gate data feed (reviewer requests, CI check status) continue to work correctly when the linked PR targets a non-default base branch, exercising the #1047 and #1050 fixes.
+The engine's issue→PR discovery (`closedByPullRequestsReferences`) and review-gate data feed (reviewer requests, CI check status) continue to work correctly when the linked PR targets a non-default base branch, exercising the handarbeit/fabrik#1047 and handarbeit/fabrik#1050 fixes.
 
-**Why this priority**: #1047 and #1050 were fixes for regressions specific to non-default-base PRs; this is the regression test that must keep passing.
+**Why this priority**: handarbeit/fabrik#1047 and handarbeit/fabrik#1050 were fixes for regressions specific to non-default-base PRs; this is the regression test that must keep passing.
 
 **Independent Test**: Confirm the engine transitions the issue through stages driven by PR state (e.g. Validate merge / CI gating) without falling back to polling errors or losing the PR link, despite the PR's base not being `main`.
 
