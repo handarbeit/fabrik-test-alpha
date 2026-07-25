@@ -1,3 +1,5 @@
-Claude reviewer smoke test v2 — verifying real Claude review after OIDC fix.
+Smoke v3 — verify real Claude review after app install.
 
-func add(a, b int) int { return a - b } // intentional bug: subtracts
+```go
+func add(a, b int) int { return a - b } // BUG: subtracts instead of adds
+```
