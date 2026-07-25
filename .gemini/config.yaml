@@ -1,0 +1,12 @@
+# Gemini Code Assist config for this Fabrik test repo.
+#
+# Auto-review is DISABLED here on purpose: the Claude PR-review workflow
+# (.github/workflows/claude-review.yml) is the bot reviewer for the test repos,
+# so e2e review-gate scenarios get a bot review WITHOUT drawing on the shared
+# handarbeit Gemini installation quota (which the real handarbeit/fabrik repo needs).
+#
+# Manual `/gemini review` still works if ever needed.
+pull_request_opened:
+  code_review: false
+  summary: false
+  help: false
