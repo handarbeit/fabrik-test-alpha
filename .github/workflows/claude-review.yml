@@ -12,6 +12,7 @@ on:
 permissions:
   contents: read
   pull-requests: write   # required to submit a formal PR review
+  id-token: write        # required by claude-code-action (OIDC)
 
 concurrency:
   group: claude-review-${{ github.event.pull_request.number }}
