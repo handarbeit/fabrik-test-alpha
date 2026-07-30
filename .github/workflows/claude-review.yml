@@ -44,7 +44,7 @@ jobs:
             Then submit a FORMAL pull-request review (not an issue comment) with:
               gh pr review ${{ github.event.pull_request.number }} --comment --body-file <your-findings-file>
             Add inline comments for specific line-level issues where useful.
-          claude_args: "--allowedTools Bash(git:*),Bash(gh:*),Read,Grep"
+          claude_args: "--model claude-sonnet-5 --allowedTools Bash(git:*),Bash(gh:*),Read,Grep"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
