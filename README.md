@@ -103,3 +103,4 @@ Apache 2.0 (matches Fabrik upstream).
 <!-- auto-merge-yolo-20260731-031633 -->
 <!-- smoke-full-pipeline-20260731-033005 -->
 <!-- paused-merged-pr-awaiting-ci-20260731-035312 -->
+<!-- paused-merged-pr-awaiting-review-20260731-040324 -->
