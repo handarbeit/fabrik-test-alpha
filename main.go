@@ -21,4 +21,5 @@ func main() {
 	fmt.Println(greeting.HelloIssue3620())
 	fmt.Println(greeting.HelloIssue3737())
 	fmt.Println(greeting.HelloIssue3834())
+	fmt.Println(greeting.HelloIssue3855())
 }
