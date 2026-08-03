@@ -13,7 +13,7 @@ This issue is a regression guard for the conjunctive CI∧review gate (handarbei
 
 ### User Story 1 - Insert conjunctive-ci-review-gate marker in README.md (Priority: P1)
 
-The e2e harness expects exactly one new line inserted in `README.md` immediately after the line containing `# fabrik-test-alpha`, using the discriminator unique to this test run. The resulting PR must carry the `slow-ci-required` marker in its body so the slow-gate CI required check fires. The harness then verifies that the conjunctive CI∧review gate holds the issue at Validate until both CI passes and the review gate clears.
+The e2e harness expects exactly one new line inserted in `README.md` immediately after the line containing `# fabrik-test-alpha`, using this recurring test's fixed marker text (the same literal string used by every prior run of this test, per Edge Cases below). The resulting PR must carry the `slow-ci-required` marker in its body so the slow-gate CI required check fires. The harness then verifies that the conjunctive CI∧review gate holds the issue at Validate until both CI passes and the review gate clears.
 
 **Why this priority**: This is the sole deliverable; nothing else is in scope.
 
