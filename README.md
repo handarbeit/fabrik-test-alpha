@@ -1,4 +1,5 @@
 # fabrik-test-alpha
+<!-- ci-fix-cycle-limit-test -->
 <!-- convergence-race-A-20260804-113220 -->
 <!-- convergence-race-B-20260804-113220 -->
 <!-- conjunctive-ci-review-gate-test -->
