@@ -157,3 +157,4 @@ Apache 2.0 (matches Fabrik upstream).
 <!-- paused-merged-pr-no-gate-label-20260803-070415 -->
 <!-- smoke-full-pipeline-20260804-113051 -->
 <!-- auto-merge-yolo-20260804-113051 -->
+<!-- cruise-pipeline-20260804-114130 -->
