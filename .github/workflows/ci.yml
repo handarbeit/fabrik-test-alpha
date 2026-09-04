@@ -17,6 +17,11 @@ jobs:
           go-version-file: go.mod
       - name: Configure git credentials
         run: git config --global url."https://${{ secrets.HANDARBEIT_PAT }}@github.com/".insteadOf "https://github.com/"
+      - name: Download modules
+        run: go mod download
+      - name: Clear git credentials
+        if: always()
+        run: git config --global --remove-section url."https://${{ secrets.HANDARBEIT_PAT }}@github.com/"
       - run: go build ./...
       - run: go test ./...
 
