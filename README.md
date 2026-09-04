@@ -1,4 +1,5 @@
 # fabrik-test-alpha
+<!-- reinvoke-changes-20260904-232800 -->
 <!-- convergence-race-B-20260904-230457 -->
 <!-- convergence-race-B-20260829-034522 -->
 <!-- convergence-race-A-20260829-034522 -->
