@@ -16,7 +16,7 @@ jobs:
         with:
           go-version-file: go.mod
       - name: Configure git credentials
-        run: git config --global url."https://${{ secrets.HANDARBEIT_PAT }}@github.com/".insteadOf "https://github.com/"
+        run: git config --global url."https://${{ secrets.HANDARBEIT_PAT }}@github.com/handarbeit/".insteadOf "https://github.com/handarbeit/"
       - run: go build ./...
       - run: go test ./...
 
