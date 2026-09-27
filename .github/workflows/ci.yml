@@ -29,12 +29,19 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SLOW_CI_SECONDS: "600"
+      # slow-ci-required-long: a wider window for scenarios whose CI-await
+      # window starts only after Review's latency (TestConjunctiveCIReviewGate).
+      # Checked first — the plain marker is a prefix of it.
+      SLOW_CI_LONG_SECONDS: "1500"
     steps:
       - name: Conditional slow gate
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
-          if echo "$PR_BODY" | grep -q 'slow-ci-required'; then
+          if echo "$PR_BODY" | grep -q 'slow-ci-required-long'; then
+            echo "long marker present — sleeping ${SLOW_CI_LONG_SECONDS}s"
+            sleep "${SLOW_CI_LONG_SECONDS}"
+          elif echo "$PR_BODY" | grep -q 'slow-ci-required'; then
             echo "marker present — sleeping ${SLOW_CI_SECONDS}s to widen the merge-race window"
             sleep "${SLOW_CI_SECONDS}"
           else
