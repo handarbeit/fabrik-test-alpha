@@ -52,8 +52,12 @@ jobs:
   # (handarbeit/fabrik#897). Without a sentinel marker in the PR body it exits 0
   # immediately. With ci-fix-sentinel-required it fails unless SENTINEL_FIX contains
   # the magic string. With ci-fix-sentinel-unfixable it always fails unconditionally.
+  # With ci-fix-sentinel-ack it fails until CI_FIX_ACK holds ack:<first run ID> (#1991).
   ci-fix-sentinel:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -61,7 +65,24 @@ jobs:
       - name: CI fix sentinel
         env:
           PR_BODY: ${{ github.event.pull_request.body || '' }}
+          BRANCH: ${{ github.head_ref }}
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # ci-fix-sentinel-ack (handarbeit/fabrik#1991, ADR 1991): the nonce T is the ID of the
+          # earliest ci.yml pull_request run on the PR's head branch, so run T is red by
+          # construction and T is not derivable from the worktree. The engine delivers the
+          # ::error annotation (which names ack:<T>) to the agent only via the CI-fix reinvoke.
+          if printf '%s' "$PR_BODY" | grep -q 'ci-fix-sentinel-ack'; then
+            WF=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq .workflow_id)
+            T=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/$WF/runs?branch=$BRANCH&event=pull_request&per_page=100" \
+                  --jq '[.workflow_runs[].id] | min')
+            if [ "$GITHUB_RUN_ID" != "$T" ] && grep -qx "ack:$T" CI_FIX_ACK 2>/dev/null; then
+              echo "ci-fix-sentinel: acknowledgement ack:$T found"
+              exit 0
+            fi
+            echo "::error title=ci-fix-sentinel::CI-fix required: create CI_FIX_ACK at the repo root containing the line ack:$T"
+            exit 1
+          fi
           if echo "$PR_BODY" | grep -qF 'ci-fix-sentinel-unfixable'; then
             echo "::error::Unfixable sentinel — fails unconditionally by design (e2e test)"
             exit 1
