@@ -15,8 +15,6 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
-      - name: Configure git credentials
-        run: git config --global url."https://${{ secrets.HANDARBEIT_PAT }}@github.com/".insteadOf "https://github.com/"
       - run: go build ./...
       - run: go test ./...
 
