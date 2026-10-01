@@ -1,4 +1,6 @@
 # fabrik-test-alpha
+<!-- convergence-race-B-20261001-011647 -->
+<!-- convergence-race-A-20261001-011647 -->
 <!-- convergence-race-B-20260930-223921 -->
 <!-- convergence-race-A-20260930-223921 -->
 <!-- convergence-race-A-20260930-202632 -->
