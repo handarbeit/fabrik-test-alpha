@@ -17,7 +17,7 @@ A pipeline run for this issue produces a change that appends exactly one HTML co
 
 **Why this priority**: This is the whole deliverable. It gives the cruise pipeline something real to carry from Specify through Validate.
 
-**Independent Test**: Inspect the PR diff. It touches only `e2e/markers/cruise-full-pipeline.md`, and the only added content is the marker line at the end of the file.
+**Independent Test**: Inspect the PR diff. Apart from the engine-persisted spec artifact (`specs/7720-*/spec.md`), it touches only `e2e/markers/cruise-full-pipeline.md`, and the only added content in that file is the marker line at the end of the file.
 
 **Acceptance Scenarios**:
 
@@ -68,7 +68,7 @@ After a human merges the PR, the issue closes and reaches its terminal state cor
 - **FR-001**: The change MUST append exactly the line `<!-- cruise-pipeline-20261013-053451 -->` at the very end of `e2e/markers/cruise-full-pipeline.md`.
 - **FR-002**: If `e2e/markers/cruise-full-pipeline.md` does not exist, it MUST be created before the line is appended.
 - **FR-003**: The change MUST NOT modify or remove any pre-existing content of that file.
-- **FR-004**: The change MUST touch no file other than `e2e/markers/cruise-full-pipeline.md`.
+- **FR-004**: The change MUST touch no file other than `e2e/markers/cruise-full-pipeline.md`, apart from the spec artifact the engine's Specify stage persists under `specs/7720-*/spec.md`.
 - **FR-005**: The Plan stage MUST NOT decompose the work into child issues.
 - **FR-006**: Under `fabrik:cruise`, the item MUST advance through all stages to Validate-complete without human approval, and the PR MUST NOT be auto-merged.
 - **FR-007**: After a human merges the PR, the issue MUST close correctly.
@@ -81,7 +81,7 @@ After a human merges the PR, the issue closes and reaches its terminal state cor
 
 ### Measurable Outcomes
 
-- **SC-001**: The PR diff contains exactly one changed file with exactly one added marker line, `<!-- cruise-pipeline-20261013-053451 -->`, at the end of the file.
+- **SC-001**: The PR diff changes exactly one file other than the engine-persisted spec artifact (`specs/7720-*/spec.md`): `e2e/markers/cruise-full-pipeline.md`, with exactly one added marker line, `<!-- cruise-pipeline-20261013-053451 -->`, at the end of the file.
 - **SC-002**: Every pipeline stage through Validate is marked complete with no human intervention, and the PR is still open and unmerged at that point.
 - **SC-003**: Within one poll cycle of a human merging the PR, the issue is closed.
 - **SC-004**: No child issues are spawned.
