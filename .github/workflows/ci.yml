@@ -35,8 +35,19 @@ jobs:
       - name: Conditional slow gate
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
         run: |
-          if echo "$PR_BODY" | grep -q 'slow-ci-required-long'; then
+          # The window is served once per PR. A merge-commit head is the merge
+          # train's singleton catch-up (or another base merge) re-running CI after
+          # the scenario's window has already been used; sleeping again only
+          # stalls the partition behind it (0.0.84 gate: a second 25-minute sleep).
+          # An unreadable parent count keeps the sleep.
+          parents=$(gh api "repos/$REPO/commits/$HEAD_SHA" --jq '.parents | length' 2>/dev/null || echo 1)
+          if [ "${parents:-1}" -gt 1 ]; then
+            echo "head $HEAD_SHA is a merge commit — window already served on this PR; fast path"
+          elif echo "$PR_BODY" | grep -q 'slow-ci-required-long'; then
             echo "long marker present — sleeping ${SLOW_CI_LONG_SECONDS}s"
             sleep "${SLOW_CI_LONG_SECONDS}"
           elif echo "$PR_BODY" | grep -q 'slow-ci-required'; then
