@@ -44,8 +44,14 @@ jobs:
           # the scenario's window has already been used; sleeping again only
           # stalls the partition behind it (0.0.84 gate: a second 25-minute sleep).
           # An unreadable parent count keeps the sleep.
+          # slow-ci-every-head opts back in to a sleep on every head, merge commits
+          # included: a scenario whose subject is the catch-up's own CI wait
+          # (TestQueuedMemberCommentEjection's occupant) needs it.
           parents=$(gh api "repos/$REPO/commits/$HEAD_SHA" --jq '.parents | length' 2>/dev/null || echo 1)
-          if [ "${parents:-1}" -gt 1 ]; then
+          if echo "$PR_BODY" | grep -q 'slow-ci-every-head'; then
+            echo "every-head marker present — sleeping ${SLOW_CI_SECONDS}s"
+            sleep "${SLOW_CI_SECONDS}"
+          elif [ "${parents:-1}" -gt 1 ]; then
             echo "head $HEAD_SHA is a merge commit — window already served on this PR; fast path"
           elif echo "$PR_BODY" | grep -q 'slow-ci-required-long'; then
             echo "long marker present — sleeping ${SLOW_CI_LONG_SECONDS}s"
