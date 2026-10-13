@@ -41,7 +41,7 @@ An operator running the release smoke test wants the marker file to end with thi
 
 **Why this priority**: This is the entire purpose of the issue. Without it, there is no evidence that the pipeline works end to end.
 
-**Independent Test**: After the PR merges, read `e2e/markers/smoke-full-pipeline.md` on the default branch. Its last line is `<!-- smoke-full-pipeline-20261013-045221 -->`, and the PR diff touches only that file.
+**Independent Test**: After the PR merges, read `e2e/markers/smoke-full-pipeline.md` on the default branch. Its last line is `<!-- smoke-full-pipeline-20261013-045221 -->`, and the PR diff touches no file other than that one, apart from the engine-generated spec artifact under `specs/7692-*/`.
 
 **Acceptance Scenarios**:
 
@@ -81,7 +81,7 @@ An operator wants the whole run to stay on one issue and one PR, so the smoke re
 - **FR-002**: If the file does not exist, it MUST be created (including any missing parent directory) containing that line.
 - **FR-003**: If the file exists, all existing content MUST be preserved unchanged, with the new line appended after it on its own line.
 - **FR-004**: The marker line MUST appear exactly once in the file.
-- **FR-005**: The change MUST consist of this one file and this one line only; no other file may be modified.
+- **FR-005**: The change MUST consist of this one file and this one line only; no other file may be modified, except the engine-generated spec artifact `specs/7692-*/spec.md`, which the pipeline commits on the branch.
 - **FR-006**: The work MUST stay within this single repository; no cross-repo work and no child issues are created.
 - **FR-007**: The change MUST be delivered through a PR that links to this issue and is merged by the pipeline.
 
@@ -90,7 +90,7 @@ An operator wants the whole run to stay on one issue and one PR, so the smoke re
 ### Measurable Outcomes
 
 - **SC-001**: After merge, the last line of `e2e/markers/smoke-full-pipeline.md` on the default branch is exactly `<!-- smoke-full-pipeline-20261013-045221 -->`.
-- **SC-002**: The merged PR's diff contains exactly one changed file with one added line, plus a missing-newline fix-up only if the previous last line lacked a trailing newline.
+- **SC-002**: The merged PR's diff contains exactly one changed file other than the engine-generated `specs/7692-*/spec.md` artifact, with one added line, plus a missing-newline fix-up only if the previous last line lacked a trailing newline.
 - **SC-003**: The issue reaches Done and is closed with a merged PR, with no manual intervention.
 - **SC-004**: Zero child issues are spawned from this issue.
 
@@ -104,7 +104,7 @@ An operator wants the whole run to stay on one issue and one PR, so the smoke re
 
 ## Out of Scope
 
-- Any change to files other than `e2e/markers/smoke-full-pipeline.md`.
+- Any change to files other than `e2e/markers/smoke-full-pipeline.md` and the engine-generated `specs/7692-*/spec.md` artifact.
 - Cross-repo changes or decomposition into child issues.
 - Changes to the smoke-test harness, pipeline configuration or stage definitions.
 - Adding tests, documentation or other markers.
