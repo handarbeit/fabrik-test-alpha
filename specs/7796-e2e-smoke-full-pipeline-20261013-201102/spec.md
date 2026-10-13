@@ -41,7 +41,7 @@ An operator files this issue and lets the pipeline run unattended. A single mark
 - **FR-001**: The file `e2e/markers/smoke-full-pipeline.md` ends with the exact line `<!-- smoke-full-pipeline-20261013-201102 -->`.
 - **FR-002**: If the file does not exist, it is created. If it exists, its prior content is preserved and the marker is appended after it.
 - **FR-003**: The marker appears exactly once in the file.
-- **FR-004**: The change touches exactly one file and adds exactly one line (plus a newline separator if the prior content lacks a trailing newline).
+- **FR-004**: Apart from the engine-persisted spec artifact under `specs/`, the change touches exactly one file (the marker file) and adds exactly one line to it (plus a newline separator if the prior content lacks a trailing newline).
 - **FR-005**: The work is delivered through a single PR in this repository whose body contains `Closes #7796`.
 - **FR-006**: The Plan stage does not decompose the work and spawns no child issues.
 - **FR-007**: No other repository is modified.
@@ -51,7 +51,7 @@ An operator files this issue and lets the pipeline run unattended. A single mark
 ### Measurable Outcomes
 
 - **SC-001**: The issue passes Specify, Research, Plan, Implement, Review and Validate and reaches Done with no manual intervention beyond the initial `fabrik:yolo` label.
-- **SC-002**: The PR diff against the default branch contains exactly one changed file and one added line.
+- **SC-002**: Excluding the engine-persisted spec artifact under `specs/`, the PR diff against the default branch contains exactly one changed file (the marker file) and one added line. The spec artifact is expected in the diff.
 - **SC-003**: The final line of `e2e/markers/smoke-full-pipeline.md` on the default branch equals the marker string, which occurs exactly once.
 - **SC-004**: The linked PR is merged and the issue is closed.
 
