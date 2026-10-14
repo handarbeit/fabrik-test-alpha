@@ -60,7 +60,7 @@ An operator running the release smoke wants a unique, timestamped marker line ap
 - **FR-001**: The file `e2e/markers/smoke-full-pipeline.md` MUST end with the line `<!-- smoke-full-pipeline-20261014-025336 -->`, appended after all existing content.
 - **FR-002**: If the file does not exist, it MUST be created containing that line.
 - **FR-003**: Existing content of the file MUST NOT be modified or removed.
-- **FR-004**: The change MUST consist of exactly one file and one added line, in this single repository.
+- **FR-004**: The implementation change MUST consist of exactly one file and one added line, in this single repository. (The engine-written spec artifact under `specs/` is expected in the PR and is not part of the implementation change.)
 - **FR-005**: The Plan stage MUST NOT decompose the work into child issues.
 - **FR-006**: The change MUST be delivered via a PR that closes this issue and is merged, with the issue ending in Done.
 
@@ -69,7 +69,7 @@ An operator running the release smoke wants a unique, timestamped marker line ap
 ### Measurable Outcomes
 
 - **SC-001**: The issue reaches Done with its linked PR merged, with no human intervention beyond the `fabrik:yolo` label.
-- **SC-002**: The merged PR's diff is exactly one added line in one file.
+- **SC-002**: Apart from the engine-written `specs/` artifact, the merged PR's diff is exactly one added line in one file.
 - **SC-003**: No child issues are spawned.
 
 ## Assumptions
@@ -84,4 +84,3 @@ An operator running the release smoke wants a unique, timestamped marker line ap
 - Any change to engine code, stage configuration, or documentation.
 - Decomposing the work into sub-issues.
 - Cleaning up or deduplicating earlier marker lines.
-END_PLACEHOLDER
