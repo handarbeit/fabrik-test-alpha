@@ -60,7 +60,7 @@ An operator runs the smoke test. The issue is processed through all pipeline sta
 - **FR-001**: `e2e/markers/smoke-full-pipeline.md` MUST end with exactly one occurrence of the line `<!-- smoke-full-pipeline-20261014-072643 -->`.
 - **FR-002**: If the file does not exist, it MUST be created, containing the marker line.
 - **FR-003**: If the file exists, its prior content MUST be preserved unchanged, and the marker line MUST be appended as a separate final line.
-- **FR-004**: The change MUST touch only this one file and add only this one line (plus a line break if needed to put the marker on its own line).
+- **FR-004**: Apart from the engine-persisted spec file for this issue (`specs/8127-*/spec.md`), the change MUST touch only this one file and add only this one line (plus a line break if needed to put the marker on its own line).
 - **FR-005**: The work MUST be confined to this repository, and the Plan stage MUST NOT decompose it into child issues.
 - **FR-006**: The change MUST be delivered as a PR that closes this issue and is merged to the default branch (`main`).
 
@@ -70,7 +70,7 @@ An operator runs the smoke test. The issue is processed through all pipeline sta
 
 - **SC-001**: The issue reaches Done with a merged PR, with no manual intervention beyond the `fabrik:yolo` label.
 - **SC-002**: On `main`, the final line of `e2e/markers/smoke-full-pipeline.md` is `<!-- smoke-full-pipeline-20261014-072643 -->`, and the marker appears exactly once.
-- **SC-003**: The merged PR's diff contains exactly one changed file and adds only the marker line.
+- **SC-003**: Apart from the engine-persisted spec file for this issue, the merged PR's diff contains exactly one changed file (`e2e/markers/smoke-full-pipeline.md`) and adds only the marker line to it.
 - **SC-004**: No child issues are created.
 
 ## Assumptions
