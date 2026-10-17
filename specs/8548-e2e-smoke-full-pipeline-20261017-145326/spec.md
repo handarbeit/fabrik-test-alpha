@@ -41,7 +41,7 @@ An operator files this issue and lets Fabrik process it unattended. At the end, 
 - **FR-001**: The file `e2e/markers/smoke-full-pipeline.md` must end with the exact line `<!-- smoke-full-pipeline-20261017-145326 -->`.
 - **FR-002**: If the file does not exist, it must be created containing the marker line.
 - **FR-003**: If the file exists, the marker line is appended at the very end and existing content is preserved unchanged.
-- **FR-004**: The change must touch only that one file and add only that one line (plus a file-creation if the file was absent).
+- **FR-004**: The change must touch only that one file and add only that one line (plus a file-creation if the file was absent), apart from the engine-committed spec artifact `specs/<issue>-<slug>/spec.md`.
 - **FR-005**: The change must be delivered through the normal pipeline PR flow, with the PR linked to this issue so that it merges and the issue reaches Done.
 - **FR-006**: The work must stay within this repository, and the Plan stage must not decompose it into child issues.
 
@@ -54,7 +54,7 @@ An operator files this issue and lets Fabrik process it unattended. At the end, 
 ### Measurable Outcomes
 
 - **SC-001**: The default branch's `e2e/markers/smoke-full-pipeline.md` ends with the marker line `<!-- smoke-full-pipeline-20261017-145326 -->`, appearing exactly once.
-- **SC-002**: The PR diff for this issue consists of exactly one file with exactly one added line, apart from the new-file case.
+- **SC-002**: The PR diff for this issue consists of exactly one file with exactly one added line, apart from the new-file case and the engine-committed spec artifact `specs/<issue>-<slug>/spec.md`.
 - **SC-003**: The issue reaches Done with its PR merged, with no human intervention beyond the initial `fabrik:yolo` label.
 - **SC-004**: No child issues are created.
 
