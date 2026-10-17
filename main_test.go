@@ -76,6 +76,7 @@ func TestGreetingOutput(t *testing.T) {
 				"e2e-cross-repo-spawn-20261015-063312-1095",
 				"e2e-cross-repo-spawn-20261015-094843-2786",
 				"e2e-cross-repo-spawn-20261017-141043-2373",
+				"e2e-cross-repo-spawn-20261017-162043-8711",
 			},
 		},
 		{
@@ -142,6 +143,7 @@ func TestGreetingOutput(t *testing.T) {
 				"e2e-cross-repo-spawn-20261015-063312-1095",
 				"e2e-cross-repo-spawn-20261015-094843-2786",
 				"e2e-cross-repo-spawn-20261017-141043-2373",
+				"e2e-cross-repo-spawn-20261017-162043-8711",
 			},
 		},
 	}
