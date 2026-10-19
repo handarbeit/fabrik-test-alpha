@@ -40,7 +40,7 @@ An operator files this issue and applies `fabrik:yolo`. Fabrik carries it throug
 - **FR-001**: The file `e2e/markers/smoke-full-pipeline.md` MUST end with the line `<!-- smoke-full-pipeline-20261019-200815 -->`.
 - **FR-002**: If the file does not exist, it MUST be created, and its only required content is the marker line.
 - **FR-003**: If the file exists, its existing content MUST be left unchanged and the marker line appended at the very end.
-- **FR-004**: The change MUST consist of exactly one file and one added line (excluding any file creation overhead).
+- **FR-004**: The implementation change MUST consist of exactly one file outside `specs/` and one added line in it (excluding any file creation overhead). The Specify-stage spec file under `specs/` is not part of the implementation change.
 - **FR-005**: The work MUST stay within this single repository, and the Plan stage MUST NOT decompose it into child issues.
 - **FR-006**: The issue MUST be able to pass through all pipeline stages to Done with the linked PR merged.
 
@@ -49,7 +49,7 @@ An operator files this issue and applies `fabrik:yolo`. Fabrik carries it throug
 ### Measurable Outcomes
 
 - **SC-001**: After the pipeline finishes, the last line of `e2e/markers/smoke-full-pipeline.md` on the default branch is exactly `<!-- smoke-full-pipeline-20261019-200815 -->`.
-- **SC-002**: The merged diff touches exactly one file and adds one line.
+- **SC-002**: The merged diff touches exactly one file outside `specs/` and adds one line to it; the only other file in the diff is the Specify-stage spec under `specs/`.
 - **SC-003**: The issue reaches Done with its linked PR merged, and no child issues were created.
 
 ## Assumptions
