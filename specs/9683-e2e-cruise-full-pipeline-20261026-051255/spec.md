@@ -87,7 +87,7 @@ After the pipeline stops at Validate-complete, a human merges the PR. The issue 
 
 - **FR-001**: The change MUST append exactly one line, `<!-- cruise-pipeline-20261026-051255 -->`, at the very end of `e2e/markers/cruise-full-pipeline.md`.
 - **FR-002**: If `e2e/markers/cruise-full-pipeline.md` does not exist, it MUST be created first, and the marker line MUST be its final line.
-- **FR-003**: The change MUST touch only that one file; no other file is added or modified by the implementation.
+- **FR-003**: The implementation MUST touch only that one file; no other file is added or modified by it. The only other file in the PR is the spec at `specs/9683-e2e-cruise-full-pipeline-20261026-051255/spec.md`, which the engine writes during Specify.
 - **FR-004**: Existing content of the marker file MUST be preserved unchanged.
 - **FR-005**: The work MUST NOT be decomposed into child issues.
 - **FR-006**: Under `fabrik:cruise`, the issue MUST auto-advance through all stages to Validate-complete without the engine merging the linked PR or moving the issue to Done.
@@ -102,7 +102,7 @@ After the pipeline stops at Validate-complete, a human merges the PR. The issue 
 
 ### Measurable Outcomes
 
-- **SC-001**: The PR diff contains exactly one changed file with one added line, the marker line.
+- **SC-001**: Apart from the engine-written spec file, the PR diff contains exactly one changed file with one added line, the marker line.
 - **SC-002**: The marker line appears exactly once in the marker file, as its last line.
 - **SC-003**: The issue reaches Validate-complete with no manual stage approvals, and the PR is still open and unmerged at that point.
 - **SC-004**: After a human merges the PR, the issue is closed.
