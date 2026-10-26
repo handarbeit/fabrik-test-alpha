@@ -87,4 +87,3 @@ An operator runs the smoke issue through the pipeline. When it finishes, the mar
 - Cross-repo work.
 - Decomposing the work into child issues.
 - Changes to Fabrik's engine, stage configuration, or documentation.
-END_PLACEHOLDER
