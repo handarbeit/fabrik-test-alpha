@@ -41,7 +41,7 @@ The pipeline produces a PR that appends one marker line, unique to this run, to 
 
 1. **Given** `e2e/markers/cruise-full-pipeline.md` already exists, **When** the change is implemented, **Then** the file's last line is `<!-- cruise-pipeline-20261126-214101 -->` and every prior line is unchanged.
 2. **Given** the file does not exist, **When** the change is implemented, **Then** the file is created and contains the marker line as its final line.
-3. **Given** the PR is open, **When** its diff is viewed, **Then** it touches exactly one file and adds exactly one line.
+3. **Given** the PR is open, **When** its diff is viewed, **Then** apart from the engine-generated spec file under `specs/`, it touches exactly one file and adds exactly one line.
 
 ---
 
@@ -86,7 +86,7 @@ After a human merges the PR, the item reaches Done and the issue closes correctl
 
 - **FR-001**: The change appends the single line `<!-- cruise-pipeline-20261126-214101 -->` at the very end of `e2e/markers/cruise-full-pipeline.md`.
 - **FR-002**: If `e2e/markers/cruise-full-pipeline.md` does not exist, it is created first, so that the marker line is its final line.
-- **FR-003**: The change modifies exactly one file and adds exactly one line; no existing content is altered or removed.
+- **FR-003**: Apart from the engine-generated spec file under `specs/11978-*/spec.md`, the change modifies exactly one file and adds exactly one line; no existing content is altered or removed.
 - **FR-004**: The work is not decomposed into child issues.
 - **FR-005**: Under `fabrik:cruise`, the item auto-advances through all stages to Validate-complete without a human advancing it.
 - **FR-006**: Under `fabrik:cruise`, the linked PR is not auto-merged and the item does not move to Done at Validate completion.
@@ -96,7 +96,7 @@ After a human merges the PR, the item reaches Done and the issue closes correctl
 
 ### Measurable Outcomes
 
-- **SC-001**: The PR diff consists of exactly one added line in exactly one file, and that line is the specified marker.
+- **SC-001**: Apart from the engine-generated spec file under `specs/`, the PR diff consists of exactly one added line in exactly one file, and that line is the specified marker.
 - **SC-002**: The item reaches Validate-complete with no manual stage advancement.
 - **SC-003**: At Validate-complete, the PR is unmerged and the issue is open.
 - **SC-004**: After a human merge, the issue is closed and the item is in Done.
